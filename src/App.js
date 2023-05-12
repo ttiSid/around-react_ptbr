@@ -1,61 +1,15 @@
 import "./index.css";
-import logo from "./images/icons/logo.svg";
+import Header from "./components/Header";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <>
       <div className="page">
-        <header className="header">
-          <img className="header__logo" src={logo} alt="logo" />
-        </header>
-        <main className="container">
-          <section className="profile">
-            <div className="profile-img-container">
-              <button className="profile__edit-picture">
-                <img className="profile__image" alt="profile" />
-              </button>
-            </div>
-            <div className="wrap">
-              <div className="wrap-profile">
-                <div className="wrap-edit-profile">
-                  <h1 className="profile__name">Jacques Cousteau</h1>
-                  <button className="profile__edit-button"></button>
-                </div>
-                <h2 className="profile__about-me">Explorar</h2>
-              </div>
-              <button className="profile__add-card-button"></button>
-            </div>
-          </section>
-          <section className="pictures">
-            <ul className="pictures-container">
-              <template className="card">
-                <li className="picture-card">
-                  <button className="picture-card__delete-btn picture-card__delete-btn_hidden"></button>
-                  <img className="picture-card__image" alt="card" />
-                  <div className="card-wrap">
-                    <h2 className="picture-card__description"></h2>
-                    <div>
-                      <button className="picture-card__like-btn picture-card__like-btn_active"></button>
-                      <div className="picture-card__likes"></div>
-                    </div>
-                  </div>
-                </li>
-              </template>
-              <template id="popup">
-                <div className="popup-container">
-                  <div className="popup-element">
-                    <button className="modal__close-btn popup__close-btn"></button>
-                    <img className="popup__image" src="#" alt="" />
-                    <h2 className="picture-card__description popup__title"></h2>
-                  </div>
-                </div>
-              </template>
-            </ul>
-          </section>
-          <footer className="footer">
-            <p className="footer__copyright">&copy;2022. Sidney Sudatti</p>
-          </footer>
-        </main>
+        <Header />
+        <Main />
+        <Footer />
       </div>
       <template id="modal-profile">
         <div className="general-modal modal-profile overlay-disable">
