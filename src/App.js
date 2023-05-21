@@ -2,15 +2,135 @@ import "./index.css";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
+import { useState } from "react";
 import PopupWithForm from "./components/PopupWithForm";
 
 function App() {
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  function handleEditAvatarClick() {
+    setIsEditAvatarPopupOpen(true);
+  }
+
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+  function handleEditProfileClick() {
+    setIsEditProfilePopupOpen(true);
+  }
+
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  function handleAddPlaceClick() {
+    setIsAddPlacePopupOpen(true);
+  }
+
+  function closeAllPopups() {
+    setIsAddPlacePopupOpen(false);
+    setIsEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+  }
+
   return (
     <>
       <div className="page">
         <Header />
-        <Main />
-        <PopupWithForm />
+        <Main
+          onEditAvatarClick={handleEditAvatarClick}
+          onEditProfileClick={handleEditProfileClick}
+          onAddPlaceClick={handleAddPlaceClick}
+        />
+        <PopupWithForm
+          modalType={"modal-profile"}
+          formType={"modal-profile"}
+          isOpen={isEditProfilePopupOpen}
+          title={"Editar perfil"}
+          buttonText="Salvar"
+          children={
+            <div className="modal__container">
+              <div>
+                <input
+                  placeholder="Name"
+                  className="modal__input-field input-field-name"
+                  type="text"
+                  name="profile-name"
+                  id="profile-name"
+                  minLength="2"
+                  maxLength="40"
+                  required
+                />
+                <span className="modal__input-error profile-name-error"></span>
+              </div>
+              <div>
+                <input
+                  placeholder="About"
+                  className="modal__input-field input-field-description"
+                  type="text"
+                  name="profile-description"
+                  id="profile-description"
+                  minLength="2"
+                  maxLength="200"
+                  required
+                />
+                <span className="modal__input-error profile-description-error"></span>
+              </div>
+            </div>
+          }
+          onClose={closeAllPopups}
+        />
+        <PopupWithForm
+          modalType={"modal-card"}
+          formType={"modal-card"}
+          isOpen={isAddPlacePopupOpen}
+          title={"Novo Local"}
+          buttonText="Crie"
+          children={
+            <div className="modal-container">
+              <div>
+                <input
+                  className="modal__input-field input-field-title"
+                  type="text"
+                  name="card-name"
+                  id="card-name"
+                  placeholder="Title"
+                  minLength="2"
+                  maxLength="30"
+                  required
+                />
+                <span className="modal__input-error card-name-error"></span>
+              </div>
+              <div>
+                <input
+                  className="modal__input-field input-field-url"
+                  type="url"
+                  name="card-url"
+                  id="card-url"
+                  placeholder="Image URL"
+                  required
+                />
+                <span className="modal__input-error card-url-error"></span>
+              </div>
+            </div>
+          }
+          onClose={closeAllPopups}
+        />
+        <PopupWithForm
+          modalType={"modal-profile-picture"}
+          formType={"form-profile-picture"}
+          isOpen={isEditAvatarPopupOpen}
+          title={"Alterar a foto de perfil"}
+          buttonText="Salvar..."
+          children={
+            <div>
+              <input
+                className="modal__input-field input-field-profile-url-picture"
+                type="url"
+                name="profile-url-picture"
+                id="profile-url-picture"
+                placeholder="Profile URL Picture"
+                required
+              />
+              <span className="modal__input-error profile-url-picture-error"></span>
+            </div>
+          }
+          onClose={closeAllPopups}
+        />
         <Footer />
       </div>
     </>

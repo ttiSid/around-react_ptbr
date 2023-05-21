@@ -1,52 +1,17 @@
 import { useState, useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
 
-function Main() {
-  function handleEditAvatarClick() {
-    /* const form = document.querySelector("#modal-profile-picture");
-    const formTemplate = form
-      .querySelector(".modal-profile-picture")
-      .cloneNode(true);
-    formTemplate.classList.add("overlay");
-    console.log(formTemplate);
-
-    const mainContainer = document.querySelector(".pictures-container");
-
-    mainContainer.append(formTemplate); */
-
-    return <PopupWithForm />;
-  }
-
-  function handleEditProfileClick() {
-    /* const form = document.querySelector("#modal-profile");
-    const formTemplate = form.querySelector(".modal-profile").cloneNode(true);
-    formTemplate.classList.add("overlay");
-    console.log(formTemplate);
-
-    const mainContainer = document.querySelector(".pictures-container");
-
-    mainContainer.append(formTemplate); */
-  }
-
-  function handleAddPlaceClick() {
-    /* const form = document.querySelector("#modal-card");
-    const formTemplate = form.querySelector(".modal-card").cloneNode(true);
-    formTemplate.classList.add("overlay");
-    console.log(formTemplate);
-
-    const mainContainer = document.querySelector(".pictures-container");
-
-    mainContainer.append(formTemplate); */
-  }
-
+function Main({
+  onEditProfileClick,
+  onAddPlaceClick,
+  onEditAvatarClick,
+  onCardClick,
+}) {
   return (
     <main className="container">
       <section className="profile">
         <div className="profile-img-container">
-          <button
-            className="profile__edit-picture"
-            onClick={handleEditAvatarClick}
-          >
+          <button className="profile__edit-picture" onClick={onEditAvatarClick}>
             <img className="profile__image" alt="profile" />
           </button>
         </div>
@@ -56,14 +21,14 @@ function Main() {
               <h1 className="profile__name">Jacques Cousteau</h1>
               <button
                 className="profile__edit-button"
-                onClick={handleEditProfileClick}
+                onClick={onEditProfileClick}
               ></button>
             </div>
             <h2 className="profile__about-me">Explorar</h2>
           </div>
           <button
             className="profile__add-card-button"
-            onClick={handleAddPlaceClick}
+            onClick={onAddPlaceClick}
           ></button>
         </div>
       </section>
