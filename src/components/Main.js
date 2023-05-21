@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import PopupWithForm from "./PopupWithForm";
+import api from "../utils/api";
+import Card from "./Card";
 
 function Main({
   onEditProfileClick,
@@ -7,24 +8,49 @@ function Main({
   onEditAvatarClick,
   onCardClick,
 }) {
+  const [{ userName, userDescription }, getUserData] = useState("");
+
+  const [userAvatar, getUserAvatar] = useState("");
+  useEffect(() => {
+    api.getUser().then((data) => {
+      getUserAvatar(data.avatar);
+      getUserData({ userName: data.name, userDescription: data.about });
+    });
+  }, [userAvatar, userName, userDescription]);
+
+  const [cards, getCard] = useState([]);
+
+  useEffect(() => {
+    const newCards = api.getCards().then((cardList) => {
+      return cardList.slice();
+    });
+    return () =>
+      newCards.then((cardList) => {
+        cardList.map((card) => {
+          getCard((cards) => [...cards, card]);
+          console.log(card);
+        });
+      });
+  }, []);
+
   return (
     <main className="container">
       <section className="profile">
         <div className="profile-img-container">
           <button className="profile__edit-picture" onClick={onEditAvatarClick}>
-            <img className="profile__image" alt="profile" />
+            <img className="profile__image" src={userAvatar} alt="profile" />
           </button>
         </div>
         <div className="wrap">
           <div className="wrap-profile">
             <div className="wrap-edit-profile">
-              <h1 className="profile__name">Jacques Cousteau</h1>
+              <h1 className="profile__name">{userName}</h1>
               <button
                 className="profile__edit-button"
                 onClick={onEditProfileClick}
               ></button>
             </div>
-            <h2 className="profile__about-me">Explorar</h2>
+            <h2 className="profile__about-me">{userDescription}</h2>
           </div>
           <button
             className="profile__add-card-button"
@@ -34,20 +60,11 @@ function Main({
       </section>
       <section className="pictures">
         <ul className="pictures-container">
-          <template className="card">
-            <li className="picture-card">
-              <button className="picture-card__delete-btn picture-card__delete-btn_hidden"></button>
-              <img className="picture-card__image" alt="card" />
-              <div className="card-wrap">
-                <h2 className="picture-card__description"></h2>
-                <div>
-                  <button className="picture-card__like-btn picture-card__like-btn_active"></button>
-                  <div className="picture-card__likes"></div>
-                </div>
-              </div>
-            </li>
-          </template>
-          <template id="popup">
+          {
+            cards.map((card, index) => {
+              return <Card card={card} key={index} />;
+            })
+            /* <template id="popup">
             <div className="popup-container">
               <div className="popup-element">
                 <button className="modal__close-btn popup__close-btn"></button>
@@ -55,7 +72,8 @@ function Main({
                 <h2 className="picture-card__description popup__title"></h2>
               </div>
             </div>
-          </template>
+          </template> */
+          }
         </ul>
       </section>
       <template id="modal-profile">
