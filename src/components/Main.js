@@ -1,6 +1,9 @@
+import { useState, useEffect } from "react";
+import PopupWithForm from "./PopupWithForm";
+
 function Main() {
   function handleEditAvatarClick() {
-    const form = document.querySelector("#modal-profile-picture");
+    /* const form = document.querySelector("#modal-profile-picture");
     const formTemplate = form
       .querySelector(".modal-profile-picture")
       .cloneNode(true);
@@ -9,29 +12,31 @@ function Main() {
 
     const mainContainer = document.querySelector(".pictures-container");
 
-    mainContainer.append(formTemplate);
+    mainContainer.append(formTemplate); */
+
+    return <PopupWithForm />;
   }
 
   function handleEditProfileClick() {
-    const form = document.querySelector("#modal-profile");
+    /* const form = document.querySelector("#modal-profile");
     const formTemplate = form.querySelector(".modal-profile").cloneNode(true);
     formTemplate.classList.add("overlay");
     console.log(formTemplate);
 
     const mainContainer = document.querySelector(".pictures-container");
 
-    mainContainer.append(formTemplate);
+    mainContainer.append(formTemplate); */
   }
 
   function handleAddPlaceClick() {
-    const form = document.querySelector("#modal-card");
+    /* const form = document.querySelector("#modal-card");
     const formTemplate = form.querySelector(".modal-card").cloneNode(true);
     formTemplate.classList.add("overlay");
     console.log(formTemplate);
 
     const mainContainer = document.querySelector(".pictures-container");
 
-    mainContainer.append(formTemplate);
+    mainContainer.append(formTemplate); */
   }
 
   return (
