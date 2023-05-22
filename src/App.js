@@ -4,6 +4,7 @@ import Main from "./components/Main";
 import Footer from "./components/Footer";
 import { useState } from "react";
 import PopupWithForm from "./components/PopupWithForm";
+import ImagePopup from "./components/ImagePopup";
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -21,10 +22,16 @@ function App() {
     setIsAddPlacePopupOpen(true);
   }
 
+  const [selectedCard, setSelectedCard] = useState(false);
+  function handleCardClick(card) {
+    setSelectedCard(card);
+  }
+
   function closeAllPopups() {
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
+    setSelectedCard(false);
   }
 
   return (
@@ -35,6 +42,7 @@ function App() {
           onEditAvatarClick={handleEditAvatarClick}
           onEditProfileClick={handleEditProfileClick}
           onAddPlaceClick={handleAddPlaceClick}
+          onCardClick={handleCardClick}
         />
         <PopupWithForm
           modalType={"modal-profile"}
@@ -131,6 +139,7 @@ function App() {
           }
           onClose={closeAllPopups}
         />
+        <ImagePopup onClose={closeAllPopups} card={selectedCard} />
         <Footer />
       </div>
     </>
