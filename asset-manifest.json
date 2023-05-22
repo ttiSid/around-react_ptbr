@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/https://ttisid.github.io/around-react_ptbr/static/css/main.586e4d24.css",
-    "main.js": "/https://ttisid.github.io/around-react_ptbr/static/js/main.a9e122fa.js",
-    "static/js/787.fae363fb.chunk.js": "/https://ttisid.github.io/around-react_ptbr/static/js/787.fae363fb.chunk.js",
-    "static/media/Inter-Medium.woff?v=3.19": "/https://ttisid.github.io/around-react_ptbr/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
-    "static/media/Inter-Black.woff?v=3.19": "/https://ttisid.github.io/around-react_ptbr/static/media/Inter-Black.c6938660eec019fefd68.woff",
-    "static/media/Inter-Regular.woff?v=3.19": "/https://ttisid.github.io/around-react_ptbr/static/media/Inter-Regular.8c206db99195777c6769.woff",
-    "static/media/Inter-Medium.woff2?v=3.19": "/https://ttisid.github.io/around-react_ptbr/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
-    "static/media/Inter-Black.woff2?v=3.19": "/https://ttisid.github.io/around-react_ptbr/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
-    "static/media/Inter-Regular.woff2?v=3.19": "/https://ttisid.github.io/around-react_ptbr/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
-    "static/media/logo.svg": "/https://ttisid.github.io/around-react_ptbr/static/media/logo.1ddb2bdc2582ce46650a16f0f59c5001.svg",
-    "index.html": "/https://ttisid.github.io/around-react_ptbr/index.html",
-    "static/media/like-button.svg": "/https://ttisid.github.io/around-react_ptbr/static/media/like-button.3826c074a1b94b101e38.svg",
-    "static/media/trash-icon.svg": "/https://ttisid.github.io/around-react_ptbr/static/media/trash-icon.c4956c32989e66228de8.svg",
-    "static/media/like-button-active.svg": "/https://ttisid.github.io/around-react_ptbr/static/media/like-button-active.226461bd64622361ffb2.svg",
-    "static/media/Close-Icon.svg": "/https://ttisid.github.io/around-react_ptbr/static/media/Close-Icon.0a2678e11f71ce96ede3.svg",
-    "static/media/Edit-button.svg": "/https://ttisid.github.io/around-react_ptbr/static/media/Edit-button.a1892ea72cb87c8fc3aa.svg",
-    "static/media/Edit-picture.svg": "/https://ttisid.github.io/around-react_ptbr/static/media/Edit-picture.a086f758840ae814ecde.svg",
-    "static/media/Add-Button.svg": "/https://ttisid.github.io/around-react_ptbr/static/media/Add-Button.54b1426515811a15ebaf.svg",
-    "main.586e4d24.css.map": "/https://ttisid.github.io/around-react_ptbr/static/css/main.586e4d24.css.map",
-    "main.a9e122fa.js.map": "/https://ttisid.github.io/around-react_ptbr/static/js/main.a9e122fa.js.map",
-    "787.fae363fb.chunk.js.map": "/https://ttisid.github.io/around-react_ptbr/static/js/787.fae363fb.chunk.js.map"
+    "main.css": "/around-react_ptbr/static/css/main.2224316a.css",
+    "main.js": "/around-react_ptbr/static/js/main.92392a95.js",
+    "static/js/787.fae363fb.chunk.js": "/around-react_ptbr/static/js/787.fae363fb.chunk.js",
+    "static/media/Inter-Medium.woff?v=3.19": "/around-react_ptbr/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
+    "static/media/Inter-Black.woff?v=3.19": "/around-react_ptbr/static/media/Inter-Black.c6938660eec019fefd68.woff",
+    "static/media/Inter-Regular.woff?v=3.19": "/around-react_ptbr/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/Inter-Medium.woff2?v=3.19": "/around-react_ptbr/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
+    "static/media/Inter-Black.woff2?v=3.19": "/around-react_ptbr/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
+    "static/media/Inter-Regular.woff2?v=3.19": "/around-react_ptbr/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/logo.svg": "/around-react_ptbr/static/media/logo.1ddb2bdc2582ce46650a16f0f59c5001.svg",
+    "static/media/like-button.svg": "/around-react_ptbr/static/media/like-button.3826c074a1b94b101e38.svg",
+    "index.html": "/around-react_ptbr/index.html",
+    "static/media/trash-icon.svg": "/around-react_ptbr/static/media/trash-icon.c4956c32989e66228de8.svg",
+    "static/media/like-button-active.svg": "/around-react_ptbr/static/media/like-button-active.226461bd64622361ffb2.svg",
+    "static/media/Close-Icon.svg": "/around-react_ptbr/static/media/Close-Icon.0a2678e11f71ce96ede3.svg",
+    "static/media/Edit-button.svg": "/around-react_ptbr/static/media/Edit-button.a1892ea72cb87c8fc3aa.svg",
+    "static/media/Edit-picture.svg": "/around-react_ptbr/static/media/Edit-picture.a086f758840ae814ecde.svg",
+    "static/media/Add-Button.svg": "/around-react_ptbr/static/media/Add-Button.54b1426515811a15ebaf.svg",
+    "main.2224316a.css.map": "/around-react_ptbr/static/css/main.2224316a.css.map",
+    "main.92392a95.js.map": "/around-react_ptbr/static/js/main.92392a95.js.map",
+    "787.fae363fb.chunk.js.map": "/around-react_ptbr/static/js/787.fae363fb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.586e4d24.css",
-    "static/js/main.a9e122fa.js"
+    "static/css/main.2224316a.css",
+    "static/js/main.92392a95.js"
   ]
 }
