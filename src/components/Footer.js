@@ -1,7 +1,10 @@
 function Footer() {
+  const currentYear = new Date(Date.now()).getFullYear();
   return (
     <footer className="footer">
-      <p className="footer__copyright">&copy;2022. Sidney Sudatti</p>
+      <p className="footer__copyright">
+        &copy;{`${currentYear}. Sidney Sudatti`}
+      </p>
     </footer>
   );
 }
