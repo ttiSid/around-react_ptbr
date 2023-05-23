@@ -35,10 +35,18 @@ class Api {
   }
 }
 
-const api = new Api({
+/* const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/web_ptbr_cohort_03",
   headers: {
     authorization: "cd11ea9c-4334-427e-8070-b6b80559cc56",
+    "Content-Type": "application/json",
+  },
+}); */
+
+const api = new Api({
+  baseUrl: `https://around.nomoreparties.co/v1/${process.env.REACT_APP_API_URL}`,
+  headers: {
+    authorization: `${process.env.REACT_APP_API_KEY}`,
     "Content-Type": "application/json",
   },
 });
