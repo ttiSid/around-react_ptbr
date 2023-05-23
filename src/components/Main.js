@@ -23,15 +23,15 @@ function Main({
   const [cards, getCard] = useState([]);
   /* É montado somente uma vez */
   useEffect(() => {
-    const newCards = api.getCards();
+    const newCards = Promise.resolve(api.getCards());
 
     return () =>
-      /* api.getCards().then((cardList) => { */
       newCards.then((cardList) => {
         cardList.map((card) => {
           return getCard((cards) => [...cards, card]);
         });
       });
+    /* api.getCards().then((cardList) => { */
   }, []);
 
   return (
