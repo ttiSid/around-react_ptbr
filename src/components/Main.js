@@ -8,24 +8,24 @@ function Main({
   onEditAvatarClick,
   onCardClick,
 }) {
-  const [{ userName, userDescription }, getUserData] = useState("");
+  const [{ userName, userDescription }, setUserData] = useState("");
   /* É montado na montagem e alterações no estado dos dados */
-  const [userAvatar, getUserAvatar] = useState("");
+  const [userAvatar, setUserAvatar] = useState("");
   useEffect(() => {
     api.getUser().then((data) => {
-      getUserAvatar(data.avatar);
-      getUserData({ userName: data.name, userDescription: data.about });
+      setUserAvatar(data.avatar);
+      setUserData({ userName: data.name, userDescription: data.about });
     });
   }, [userAvatar, userName, userDescription]);
 
   /*----------------------------------------------------------------------*/
 
-  const [cards, getCard] = useState([]);
+  const [cards, setCard] = useState([]);
   /* É montado somente uma vez */
   useEffect(() => {
     api.getCards().then((cardList) => {
       cardList.map((card) => {
-        return getCard((cards) => [...cards, card]);
+        return setCard((cards) => [...cards, card]);
       });
     });
   }, []);
