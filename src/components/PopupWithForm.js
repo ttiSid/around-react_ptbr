@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React from "react";
 
 function PopupWithForm(props) {
   const { modalType, formType, title, children, buttonText, isOpen, onClose } =
@@ -23,7 +23,10 @@ function PopupWithForm(props) {
               onClick={onClose}
             ></button>
             <h2 className="modal__title">{title}</h2>
-            {children}
+            {
+              /*Adiciona os inputs de cada form conforme a prop children */
+              children
+            }
             <div className="modal__container">
               <button
                 className="modal__submit-btn modal__submit-btn_error"

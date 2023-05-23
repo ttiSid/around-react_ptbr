@@ -9,7 +9,7 @@ function Main({
   onCardClick,
 }) {
   const [{ userName, userDescription }, getUserData] = useState("");
-
+  /* É montado na montagem e alterações no estado dos dados */
   const [userAvatar, getUserAvatar] = useState("");
   useEffect(() => {
     api.getUser().then((data) => {
@@ -18,16 +18,15 @@ function Main({
     });
   }, [userAvatar, userName, userDescription]);
 
-  const [cards, getCard] = useState([]);
+  /*----------------------------------------------------------------------*/
 
+  const [cards, getCard] = useState([]);
+  /* É montado somente uma vez */
   useEffect(() => {
-    const newCards = api.getCards().then((cardList) => {
-      return cardList.slice();
-    });
     return () =>
-      newCards.then((cardList) => {
+      api.getCards().then((cardList) => {
         cardList.map((card) => {
-          getCard((cards) => [...cards, card]);
+          return getCard((cards) => [...cards, card]);
         });
       });
   }, []);
@@ -59,9 +58,12 @@ function Main({
       </section>
       <section className="pictures">
         <ul className="pictures-container">
-          {cards.map((card, index) => {
-            return <Card card={card} key={index} onCardClick={onCardClick} />;
-          })}
+          {
+            /* Renderiza cada elemento do array recebido pela API para o componente Card */
+            cards.map((card, index) => {
+              return <Card card={card} key={index} onCardClick={onCardClick} />;
+            })
+          }
         </ul>
       </section>
     </main>
