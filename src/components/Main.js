@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import api from "../utils/api";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import Card from "./Card";
 
 function Main({
@@ -8,15 +9,7 @@ function Main({
   onEditAvatarClick,
   onCardClick,
 }) {
-  const [{ userName, userDescription }, setUserData] = useState("");
-  /* É montado na montagem e alterações no estado dos dados */
-  const [userAvatar, setUserAvatar] = useState("");
-  useEffect(() => {
-    api.getUser().then((data) => {
-      setUserAvatar(data.avatar);
-      setUserData({ userName: data.name, userDescription: data.about });
-    });
-  }, [userAvatar, userName, userDescription]);
+  const currentUser = useContext(CurrentUserContext);
 
   /*----------------------------------------------------------------------*/
 
@@ -35,19 +28,23 @@ function Main({
       <section className="profile">
         <div className="profile-img-container">
           <button className="profile__edit-picture" onClick={onEditAvatarClick}>
-            <img className="profile__image" src={userAvatar} alt="profile" />
+            <img
+              className="profile__image"
+              src={currentUser.avatar}
+              alt="profile"
+            />
           </button>
         </div>
         <div className="wrap">
           <div className="wrap-profile">
             <div className="wrap-edit-profile">
-              <h1 className="profile__name">{userName}</h1>
+              <h1 className="profile__name">{currentUser.name}</h1>
               <button
                 className="profile__edit-button"
                 onClick={onEditProfileClick}
               ></button>
             </div>
-            <h2 className="profile__about-me">{userDescription}</h2>
+            <h2 className="profile__about-me">{currentUser.about}</h2>
           </div>
           <button
             className="profile__add-card-button"

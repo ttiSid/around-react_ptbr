@@ -4,7 +4,7 @@ class Api {
     this.headers = options.headers;
   }
 
-  getUser() {
+  getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers,
     })
