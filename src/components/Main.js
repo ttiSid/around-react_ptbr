@@ -14,7 +14,6 @@ function Main({
   /*----------------------------------------------------------------------*/
 
   const [cards, setCard] = useState([]);
-  /* É montado somente uma vez */
   useEffect(() => {
     api.getCards().then((cardList) => {
       cardList.map((card) => {
@@ -22,6 +21,23 @@ function Main({
       });
     });
   }, []);
+
+  function handleCardLike(card) {
+    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+
+    api.changeLikeCardStatus(card._id, !isLiked).then((newCardLike) => {
+      setCard((state) =>
+        state.map((item) => (item._id === card._id ? newCardLike : item))
+      );
+    });
+  }
+
+  function handleCardDelete(card) {
+    api.deleteCard(card._id).then((deletedCard) => {
+      const newList = cards.filter((card) => card._id !== deletedCard._id);
+      setCard(newList);
+    });
+  }
 
   return (
     <main className="container">
@@ -57,7 +73,15 @@ function Main({
           {
             /* Renderiza cada elemento do array recebido pela API para o componente Card */
             cards.map((card, index) => {
-              return <Card card={card} key={index} onCardClick={onCardClick} />;
+              return (
+                <Card
+                  card={card}
+                  key={index}
+                  onCardClick={onCardClick}
+                  onCardLike={handleCardLike}
+                  onCardDelete={handleCardDelete}
+                />
+              );
             })
           }
         </ul>

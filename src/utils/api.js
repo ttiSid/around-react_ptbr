@@ -33,6 +33,55 @@ class Api {
         console.log(err);
       });
   }
+
+  changeLikeCardStatus(cardId, likeStatus) {
+    if (likeStatus === true) {
+      return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
+        method: "PUT",
+        headers: this.headers,
+      })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          return Promise.reject(`Error: ${res.status}`);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
+        method: "DELETE",
+        headers: this.headers,
+      })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          return Promise.reject(`Error: ${res.status}`);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }
+
+  deleteCard(card) {
+    return fetch(`${this.baseUrl}/cards/${card}`, {
+      method: "DELETE",
+      headers: this.headers,
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log(card);
+          return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 }
 
 const api = new Api({
