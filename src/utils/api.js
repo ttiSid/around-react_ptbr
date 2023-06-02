@@ -73,7 +73,6 @@ class Api {
     })
       .then((res) => {
         if (res.ok) {
-          console.log(card);
           return res.json();
         }
         return Promise.reject(`Error: ${res.status}`);

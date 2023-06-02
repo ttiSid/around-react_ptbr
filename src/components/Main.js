@@ -22,6 +22,12 @@ function Main({
     });
   }, []);
 
+  function handleCardDelete(card) {
+    api.deleteCard(card._id).then(() => {
+      setCard(cards.filter((cardItem) => cardItem._id !== card._id));
+    });
+  }
+
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
 
@@ -29,13 +35,6 @@ function Main({
       setCard((state) =>
         state.map((item) => (item._id === card._id ? newCardLike : item))
       );
-    });
-  }
-
-  function handleCardDelete(card) {
-    api.deleteCard(card._id).then((deletedCard) => {
-      const newList = cards.filter((card) => card._id !== deletedCard._id);
-      setCard(newList);
     });
   }
 
