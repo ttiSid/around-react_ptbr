@@ -7,6 +7,7 @@ import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
 import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import EditProfilePopup from "./EditProfilePopup";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -43,6 +44,12 @@ function App() {
     setSelectedCard({});
   }
 
+  function handleUpdateUser({ name, about }) {
+    api.setUserInfo({ name, about }).then((userProfile) => {
+      setCurrentUser(userProfile);
+    });
+  }
+
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
@@ -53,43 +60,10 @@ function App() {
           onAddPlaceClick={handleAddPlaceClick}
           onCardClick={handleCardClick}
         />
-        <PopupWithForm
-          modalType={"modal-profile"}
-          formType={"modal-profile"}
+        <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
-          title={"Editar perfil"}
-          buttonText="Salvar"
-          children={
-            <div className="modal__container">
-              <div>
-                <input
-                  placeholder="Name"
-                  className="modal__input-field input-field-name"
-                  type="text"
-                  name="profile-name"
-                  id="profile-name"
-                  minLength="2"
-                  maxLength="40"
-                  required
-                />
-                <span className="modal__input-error profile-name-error"></span>
-              </div>
-              <div>
-                <input
-                  placeholder="About"
-                  className="modal__input-field input-field-description"
-                  type="text"
-                  name="profile-description"
-                  id="profile-description"
-                  minLength="2"
-                  maxLength="200"
-                  required
-                />
-                <span className="modal__input-error profile-description-error"></span>
-              </div>
-            </div>
-          }
           onClose={closeAllPopups}
+          onUpdateUser={handleUpdateUser}
         />
         <PopupWithForm
           modalType={"modal-card"}

@@ -1,8 +1,16 @@
 import React from "react";
 
 function PopupWithForm(props) {
-  const { modalType, formType, title, children, buttonText, isOpen, onClose } =
-    props;
+  const {
+    modalType,
+    formType,
+    title,
+    children,
+    buttonText,
+    isOpen,
+    onClose,
+    onSubmit,
+  } = props;
 
   return (
     <div className="pictures-container">
@@ -13,6 +21,7 @@ function PopupWithForm(props) {
       >
         <div className="modal">
           <form
+            onSubmit={onSubmit}
             action="#"
             className={`modal-container form ${formType}`}
             noValidate
