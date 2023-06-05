@@ -56,6 +56,31 @@ function App() {
       setCurrentUser(userProfile);
     });
   }
+  /* CARDS */
+  const [cards, setCard] = useState([]);
+  useEffect(() => {
+    api.getCards().then((cardList) => {
+      cardList.map((card) => {
+        return setCard((cards) => [...cards, card]);
+      });
+    });
+  }, []);
+
+  function handleCardDelete(card) {
+    api.deleteCard(card._id).then(() => {
+      setCard(cards.filter((cardItem) => cardItem._id !== card._id));
+    });
+  }
+
+  function handleCardLike(card) {
+    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+
+    api.changeLikeCardStatus(card._id, !isLiked).then((newCardLike) => {
+      setCard((state) =>
+        state.map((item) => (item._id === card._id ? newCardLike : item))
+      );
+    });
+  }
 
   return (
     <div className="page">
@@ -66,6 +91,9 @@ function App() {
           onEditProfileClick={handleEditProfileClick}
           onAddPlaceClick={handleAddPlaceClick}
           onCardClick={handleCardClick}
+          onCardLike={handleCardLike}
+          onCardDelete={handleCardDelete}
+          cards={cards}
         />
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}

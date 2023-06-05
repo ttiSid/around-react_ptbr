@@ -8,12 +8,15 @@ function Main({
   onAddPlaceClick,
   onEditAvatarClick,
   onCardClick,
+  cards,
+  onCardLike,
+  onCardDelete,
 }) {
   const currentUser = useContext(CurrentUserContext);
 
   /*----------------------------------------------------------------------*/
 
-  const [cards, setCard] = useState([]);
+  /* const [cards, setCard] = useState([]);
   useEffect(() => {
     api.getCards().then((cardList) => {
       cardList.map((card) => {
@@ -36,7 +39,7 @@ function Main({
         state.map((item) => (item._id === card._id ? newCardLike : item))
       );
     });
-  }
+  } */
 
   return (
     <main className="container">
@@ -77,8 +80,8 @@ function Main({
                   card={card}
                   key={index}
                   onCardClick={onCardClick}
-                  onCardLike={handleCardLike}
-                  onCardDelete={handleCardDelete}
+                  onCardLike={onCardLike}
+                  onCardDelete={onCardDelete}
                 />
               );
             })
