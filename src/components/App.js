@@ -8,6 +8,7 @@ import ImagePopup from "./ImagePopup";
 import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
+import EditAvatarPopup from "./EditAvatarPopup";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -46,6 +47,12 @@ function App() {
 
   function handleUpdateUser({ name, about }) {
     api.setUserInfo({ name, about }).then((userProfile) => {
+      setCurrentUser(userProfile);
+    });
+  }
+
+  function handleUpdateAvatar(avatar) {
+    api.setUserAvatar(avatar).then((userProfile) => {
       setCurrentUser(userProfile);
     });
   }
@@ -101,26 +108,10 @@ function App() {
           }
           onClose={closeAllPopups}
         />
-        <PopupWithForm
-          modalType={"modal-profile-picture"}
-          formType={"form-profile-picture"}
+        <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}
-          title={"Alterar a foto de perfil"}
-          buttonText="Salvar..."
-          children={
-            <div>
-              <input
-                className="modal__input-field input-field-profile-url-picture"
-                type="url"
-                name="profile-url-picture"
-                id="profile-url-picture"
-                placeholder="Profile URL Picture"
-                required
-              />
-              <span className="modal__input-error profile-url-picture-error"></span>
-            </div>
-          }
           onClose={closeAllPopups}
+          onUpdateAvatar={handleUpdateAvatar}
         />
         <ImagePopup onClose={closeAllPopups} card={selectedCard} />
         <Footer />
