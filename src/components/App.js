@@ -9,6 +9,7 @@ import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
+import AddPlacePopup from "./AddPlacePopup";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -56,7 +57,8 @@ function App() {
       setCurrentUser(userProfile);
     });
   }
-  /* CARDS */
+
+  /* ------------ CARDS ------------ */
   const [cards, setCard] = useState([]);
   useEffect(() => {
     api.getCards().then((cardList) => {
@@ -82,6 +84,12 @@ function App() {
     });
   }
 
+  function handleAddPlaceSubmit({ name, link }) {
+    api.addCard({ name, link }).then((newCard) => {
+      setCard((cards) => [newCard, ...cards]);
+    });
+  }
+
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
@@ -100,41 +108,10 @@ function App() {
           onClose={closeAllPopups}
           onUpdateUser={handleUpdateUser}
         />
-        <PopupWithForm
-          modalType={"modal-card"}
-          formType={"modal-card"}
+        <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
-          title={"Novo Local"}
-          buttonText="Crie"
-          children={
-            <div className="modal-container">
-              <div>
-                <input
-                  className="modal__input-field input-field-title"
-                  type="text"
-                  name="card-name"
-                  id="card-name"
-                  placeholder="Title"
-                  minLength="2"
-                  maxLength="30"
-                  required
-                />
-                <span className="modal__input-error card-name-error"></span>
-              </div>
-              <div>
-                <input
-                  className="modal__input-field input-field-url"
-                  type="url"
-                  name="card-url"
-                  id="card-url"
-                  placeholder="Image URL"
-                  required
-                />
-                <span className="modal__input-error card-url-error"></span>
-              </div>
-            </div>
-          }
           onClose={closeAllPopups}
+          onAddPlaceSubmit={handleAddPlaceSubmit}
         />
         <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}

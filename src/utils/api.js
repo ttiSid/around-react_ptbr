@@ -119,12 +119,15 @@ class Api {
       .catch((err) => {
         console.log(err);
       });
-  } /* {
-    return fetch(`${this.baseUrl}/users/me/avatar`, {
-      method: "PATCH",
+  }
+
+  addCard({ name, link }) {
+    return fetch(`${this.baseUrl}/cards`, {
+      method: "POST",
       headers: this.headers,
       body: JSON.stringify({
-        avatar: avatar,
+        name: name,
+        link: link,
       }),
     })
       .then((res) => {
@@ -136,7 +139,7 @@ class Api {
       .catch((err) => {
         console.log(err);
       });
-  } */
+  }
 }
 
 const api = new Api({
