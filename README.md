@@ -18,18 +18,17 @@ Confira o projeto: [Around-react](https://ttisid.github.io/around-react_ptbr)
 
 ### Últimas atualizações:
 
-- Consumo de API para:
-  - Receber Cards existentes na API;
-  - Receber nome, descrição e foto de perfil;
-- Abertura e fechamento de Pop-ups;
-- Organização do repositório.
+- Adicionado formulário para Edição de perfil
+- Adicionado formulário para Adição de novos cards
+- Adicionada função de deletar um card
+- Adição e remoção de curtidas
+- Cross device
 
 ## Funcionalidades (Em andamento)
 
-- Edição de perfil
-- Adição e remoção de cards
-- Adição e remoção de curtidas
-- Cross device
+- Validação dos formulários
+- Configuração de indicadores de carregamento de solicitação de API
+- Popup de confirmação ao remover um card
 
 ## Stack utilizada
 
