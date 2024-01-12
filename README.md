@@ -1,3 +1,7 @@
+<div align="center">
+  <img height="500" src="https://github.com/ttiSid/around-react_ptbr/blob/main/around-us.png"  />
+</div>
+
 # Around-react
 
 ## Descrição do projeto:
